@@ -12,7 +12,6 @@ const routes: Routes = [
     { path: 'register-link', component: RegisterLinkComponent, },
 
     { path: '', redirectTo: 'entreprise', pathMatch: 'full' },
-
 ];
 
 export const AuthRouting: ModuleWithProviders<any> = RouterModule.forChild(routes);

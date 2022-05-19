@@ -20,8 +20,8 @@ export class RegisterComponent {
   onSubmit(): void {
     this.authService.SignUp(this.form)
       .subscribe(
-        (response) => {
-
+        (_response) => {
+          this.authService.redirect(_response);
         },
         (_err: HttpErrorResponse) => {
           if ((typeof _err.error.message) == "string")

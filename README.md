@@ -1,6 +1,6 @@
 ## FIRST
 
-npm i
+> npm i
 
 ## TO RUN
 

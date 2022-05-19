@@ -19,7 +19,8 @@ export class PlayerComponent {
   onSubmit(): void {
     this.authService.SignInPlayer(this.form)
       .subscribe(
-        (response) => {
+        (_response) => {
+          this.authService.redirect(_response);
 
         },
         (_err: HttpErrorResponse) => {

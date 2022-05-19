@@ -24,7 +24,7 @@ export class RegisterLinkComponent {
     this.authService.SignUpFromLink(this.form)
       .subscribe(
         (_response) => {
-
+          this.authService.redirect(_response);
         },
         (_err: HttpErrorResponse) => {
           if ((typeof _err.error.message) == "string")
