@@ -1,0 +1,25 @@
+<div class="main">
+    <div>
+        <div class="top">
+            <h1>Entreprise <br />Sign Up</h1>
+            <p>Hello there! Sign in and start view and managing your team</p>
+        </div>
+        <div class="container">
+            <br />
+            <form (ngSubmit)="onSubmit()">
+                <p class="errorMsg" *ngIf="errorMsgs!= ''">{{ errorMsgs }}</p>
+
+                <input type="text" [(ngModel)]="form.name" name="name" placeholder="Full name" />
+                <input type="text" [(ngModel)]="form.email" name="email" placeholder="Email" />
+                <input type="password" [(ngModel)]="form.password" name="password" placeholder="Password" />
+
+                <button>Sign up</button>
+                <br />
+            </form>
+            <hr />
+            <button><a routerLink="/auth/entreprise"> Sign In as Entreprise</a></button>
+            <b style="margin: 0 10px;">OR</b>
+            <button><a routerLink="/auth/player"> Sign In as player</a></button>
+        </div>
+    </div>
+</div>

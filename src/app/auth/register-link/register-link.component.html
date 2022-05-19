@@ -1,0 +1,22 @@
+<div class="main">
+    <div>
+        <div class="top">
+            <h1>Player <br />Sign Up</h1>
+            <p>Hello there! Sign up and start view and managing your team</p>
+        </div>
+        <div class="container">
+            <br />
+            <form (ngSubmit)="onSubmit()">
+                <p class="errorMsg" *ngIf="errorMsgs!= ''">{{ errorMsgs }}</p>
+
+                <input type="text" [(ngModel)]="form.age" name="age" placeholder="age" />
+                <input type="text" [(ngModel)]="form.phone" name="phone" placeholder="phone" />
+                <input type="text" [(ngModel)]="form.position" name="position" placeholder="position" />
+                <input type="password" [(ngModel)]="form.password" name="password" placeholder="Password" />
+
+                <button>Sign up</button>
+                <br />
+            </form>
+        </div>
+    </div>
+</div>
