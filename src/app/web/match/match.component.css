@@ -1,0 +1,9 @@
+.match_list{
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 10px;
+    background-color: aquamarine;
+}
+.match_details {
+    text-align: center;
+}

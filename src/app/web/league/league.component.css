@@ -1,0 +1,19 @@
+.view_Leg {
+    background-color: antiquewhite;
+    padding: 10px 25px;
+    border-radius: 5px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.match{
+    background-color: cadetblue;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.match > h2{
+    color: black;
+    text-align: center;
+}

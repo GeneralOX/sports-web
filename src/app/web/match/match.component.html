@@ -1,0 +1,38 @@
+<h1>Matches</h1>
+
+<div *ngIf="screen.view == 1">
+
+    <div class="match_list" *ngFor="let e of screen.matches">
+        <div>
+            <p> {{ e.team1.name }} VS {{e.team2.name }}</p>
+            <p> Start At: {{clearDate(e.startAt)}}</p>
+            <p>score: {{e.score}}</p>
+        </div>
+        <div>
+            <button [routerLink]="['/app/match', e.id]">View</button>
+        </div>
+    </div>
+</div>
+<div class="match_details" *ngIf="screen.view == 2">
+    <h2>
+        <p> {{ screen.match.team1.name }} VS {{screen.match.team2.name }}</p>
+        <hr />
+        Terrain: <b>{{screen.match.field.name }} </b> <br />
+        startAt: <b>{{ clearDate(screen.match.startAt)  }} </b> <br />
+        score: <b>{{screen.match.score == "" ? "0:0" : screen.match.score }}</b> <br />
+    </h2>
+
+    <h3>Players team 1</h3>
+    <ul>
+        <li *ngFor="let p of screen.match.team1.players">
+            <p> {{p.name}} => {{ p.position }}</p>
+        </li>
+    </ul>
+
+    <h3>Players team 2</h3>
+    <ul>
+        <li *ngFor="let p of screen.match.team2.players">
+            <p> {{p.name}} => {{ p.position }}</p>
+        </li>
+    </ul>
+</div>
