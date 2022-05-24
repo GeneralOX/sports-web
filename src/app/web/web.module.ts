@@ -8,6 +8,7 @@ import { LeagueComponent } from './league/league.component';
 import { WebService } from './web.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatchComponent } from './match/match.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -22,6 +23,7 @@ import { MatchComponent } from './match/match.component';
   imports: [
     CommonModule,
     HttpClientModule,
+    FormsModule,
     WebRouting
   ],
   providers: [WebService]

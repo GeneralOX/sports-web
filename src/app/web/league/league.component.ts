@@ -10,12 +10,15 @@ import { WebService } from '../web.service';
 export class LeagueComponent implements OnInit {
   screen: any = {
     view: 1,
-
+    isEntreprise: false,
     leagueId: -1,
     leagues: []
   }
 
-  constructor(private webSerivce: WebService, private route: ActivatedRoute) { }
+  constructor(private webSerivce: WebService, private route: ActivatedRoute) {
+    let user = webSerivce.getUserInfo();
+    this.screen.isEntreprise = (user.role == 0);
+  }
 
   ngOnInit() {
     this.screen.leagueId = this.route.snapshot.paramMap.get('id') ?? "-1";
@@ -34,6 +37,10 @@ export class LeagueComponent implements OnInit {
             this.screen.teams = _res.teams;
           })
     }
+  }
+
+  joinLeague(leagueId: number) {
+
   }
 
   // FUNC

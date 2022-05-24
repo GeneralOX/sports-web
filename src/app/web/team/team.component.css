@@ -1,0 +1,59 @@
+.noTeam {
+    background-color: rgb(193, 117, 255);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 15px;
+    color: black;
+    border-radius: 10px;
+}
+
+.teamCreate {
+    background-color: #a5d6a7;
+    padding: 25px 0;
+    display: flex;
+    justify-content: center;
+    border-radius: 15px;
+    margin-top: 15px;
+}
+
+.details .teamName {
+    text-align: center;
+}
+
+.details table {
+    width: -webkit-fill-available;
+    text-align: center;
+}
+
+.details table th {
+    background-color: darkgray;
+}
+
+.details table td {
+    padding: 20px 0;
+    border-bottom: 2px solid #ddd;
+}
+
+.tags b {
+    background-color: antiquewhite;
+    border-radius: 20px;
+    padding: 5px 10px;
+    border: 2px solid #ebdece;
+    margin: 0 5px;
+}
+
+.tags b.leader {
+    background-color: #ffab91;
+    border: 2px solid #ff8a65;
+}
+
+.tags b.stuff {
+    background-color: #a5d6a7;
+    border: 2px solid #81c784;
+}
+
+.tags b.player {
+    background-color: #b2ebf2;
+    border: 2px solid #80deea;
+}

@@ -18,21 +18,19 @@
         <p> {{ screen.match.team1.name }} VS {{screen.match.team2.name }}</p>
         <hr />
         Terrain: <b>{{screen.match.field.name }} </b> <br />
-        startAt: <b>{{ clearDate(screen.match.startAt)  }} </b> <br />
+        startAt: <b>{{ clearDate(screen.match.startAt) }} </b> <br />
         score: <b>{{screen.match.score == "" ? "0:0" : screen.match.score }}</b> <br />
     </h2>
 
-    <h3>Players team 1</h3>
-    <ul>
-        <li *ngFor="let p of screen.match.team1.players">
-            <p> {{p.name}} => {{ p.position }}</p>
-        </li>
-    </ul>
-
-    <h3>Players team 2</h3>
-    <ul>
-        <li *ngFor="let p of screen.match.team2.players">
-            <p> {{p.name}} => {{ p.position }}</p>
-        </li>
-    </ul>
+    <h3>
+        Players team 1 <a [routerLink]="['/app/team', screen.match.team1.id]">
+            <u>View</u>
+        </a>
+    </h3>
+    <h3>
+        Players team 2 <a [routerLink]="['/app/team', screen.match.team2.id]">
+            <u>View</u>
+        </a>
+    </h3>
+   
 </div>

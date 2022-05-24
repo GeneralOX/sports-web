@@ -9,7 +9,7 @@ const routes: Routes = [
     { path: 'entreprise', component: EntrepriseComponent, },
     { path: 'player', component: PlayerComponent, },
     { path: 'register', component: RegisterComponent, },
-    { path: 'register-link', component: RegisterLinkComponent, },
+    { path: 'register-link/:id', component: RegisterLinkComponent, },
 
     { path: '', redirectTo: 'entreprise', pathMatch: 'full' },
 ];

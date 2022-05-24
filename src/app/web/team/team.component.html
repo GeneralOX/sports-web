@@ -1,1 +1,43 @@
-<p>team works! => {{ name }} </p>
+<div class="noTeam" *ngIf="!app.hasTeam && !app.isPlayer">
+    <p>You don't have team <b>Make one now!</b></p>
+    <button (click)="app.createTeam = true">Create</button>
+</div>
+<div class="teamCreate" *ngIf="app.createTeam">
+    <form (ngSubmit)="createTeam()">
+        <input type="text" name="name" [(ngModel)]="app.createTeamName" placeholder="team name" />
+        <p style="width: 10px;"></p>
+        <button>Create</button>
+    </form>
+</div>
+<div class="details" *ngIf="details != null">
+    <h3 class="teamName">{{ details.name }}</h3>
+
+    <button *ngIf="app.myTeam">Add player</button>
+    <div class="addPlayer">
+        <form (ngSubmit)="addPlayer()">
+            <input type="text" [(ngModel)]="addPlayerModel.name" name="name" />
+            <input type="text" [(ngModel)]="addPlayerModel.email" name="email" />
+            <button>ADD</button>
+        </form>
+    </div>
+
+
+    <table>
+        <tr>
+            <th>Player name</th>
+            <th>Age</th>
+            <th>Position</th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let pl of details.players">
+            <td>{{pl.name}}</td>
+            <td>{{pl.age}}</td>
+            <td>{{pl.position}}</td>
+            <td class="tags">
+                <b class="leader" *ngIf="pl.isLeader">Leader</b>
+                <b class="stuff" *ngIf="pl.role == 1">Stuff</b>
+                <b class="player" *ngIf="pl.role == 2">player</b>
+            </td>
+        </tr>
+    </table>
+</div>

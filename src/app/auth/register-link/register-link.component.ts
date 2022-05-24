@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -11,13 +12,23 @@ import { AuthService } from '../auth.service';
 export class RegisterLinkComponent {
   errorMsgs = "";
 
-  constructor(private authService: AuthService) { }
   form = {
     id: 1,
     age: '',
     password: '',
     phone: '',
     position: '',
+  }
+  constructor(private authService: AuthService,
+    private route: ActivatedRoute,
+    private router: Router,
+  ) {
+    let userId = this.route.snapshot.paramMap.get('id');
+    if (userId != null) {
+      this.form.id = Number(userId);
+    } else {
+      this.router.navigate(["/"]);
+    }
   }
 
   onSubmit(): void {
