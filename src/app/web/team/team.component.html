@@ -15,8 +15,8 @@
     <button *ngIf="app.myTeam">Add player</button>
     <div class="addPlayer">
         <form (ngSubmit)="addPlayer()">
-            <input type="text" [(ngModel)]="addPlayerModel.name" name="name" />
-            <input type="text" [(ngModel)]="addPlayerModel.email" name="email" />
+            <input type="text" [(ngModel)]="addPlayerModel.name" placeholder="name" name="name" />
+            <input type="text" [(ngModel)]="addPlayerModel.email"  placeholder="email" name="email" />
             <button>ADD</button>
         </form>
     </div>
