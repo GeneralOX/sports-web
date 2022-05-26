@@ -19,6 +19,7 @@ export class WebService {
         let user = localStorage.getItem("user");
         return JSON.parse(user ?? "{}");
     }
+
     setUserInfo(data: any) {
         localStorage.setItem("user", JSON.stringify(data));
     }
@@ -50,5 +51,10 @@ export class WebService {
     }
     getTeamDetails(id: number) {
         return this.http.get<any>(`${this.configUrl}/team/${id}`, this.httpHeader);
+    }
+
+    /* ******* */
+    joinLeague(data: any) {
+        return this.http.post<any>(`${this.configUrl}/ranking/join`, data, this.httpHeader);
     }
 }

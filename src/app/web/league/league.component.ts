@@ -8,6 +8,8 @@ import { WebService } from '../web.service';
   styleUrls: ['./league.component.css']
 })
 export class LeagueComponent implements OnInit {
+  myTeamId = 0;
+
   screen: any = {
     view: 1,
     isEntreprise: false,
@@ -18,6 +20,7 @@ export class LeagueComponent implements OnInit {
   constructor(private webSerivce: WebService, private route: ActivatedRoute) {
     let user = webSerivce.getUserInfo();
     this.screen.isEntreprise = (user.role == 0);
+    this.myTeamId = user.team;
   }
 
   ngOnInit() {
@@ -40,6 +43,18 @@ export class LeagueComponent implements OnInit {
   }
 
   joinLeague(leagueId: number) {
+    this.webSerivce
+      .joinLeague({ leagueId: leagueId, teamId: this.myTeamId })
+      .subscribe(
+        (r: any) => {
+          console.log(r);
+          if (r.alreadyJoin) {
+            alert("You have been already joined this league!");
+          } else {
+            alert("You have been join the league :)");
+          }
+        }
+      );
 
   }
 
@@ -47,6 +62,7 @@ export class LeagueComponent implements OnInit {
   clearDate(e: string) {
     return e.split("T")[0];
   }
+
   getTeamName(id: number) {
     var result;
     let object = this.screen.teams;

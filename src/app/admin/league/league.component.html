@@ -1,0 +1,47 @@
+<div *ngIf="isMain">
+    <h1> Leagues </h1>
+    <button>Add League</button>
+    <br />
+    <table>
+        <tr>
+            <th>League Name</th>
+            <th>op</th>
+        </tr>
+        <tr *ngFor="let e of leagues">
+            <td>{{ e.name }} </td>
+            <td>
+                <button [routerLink]="['/admin/league', e.id]">View</button>
+                <button>Del</button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div *ngIf="!isMain">
+    <h1> League# {{ details.league.name }} </h1>
+    <h1>{{ clearDate(details.league.startTime) }} => {{ clearDate(details.league.endTime) }} </h1>
+    <br />
+
+    <h2>Rank</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Rank</th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let e of details.rank">
+            <td>{{ e.team.name }} </td>
+            <td>
+                <div *ngIf="e.status">
+                    {{ e.Rank }}
+                </div>
+                <div *ngIf="!e.status">
+                    Pending
+                </div>
+            </td>
+            <td>
+                <button *ngIf="!e.status" (click)="confirmJoin(e.id)">confirm</button>
+            </td>
+        </tr>
+    </table>
+</div>

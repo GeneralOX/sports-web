@@ -10,10 +10,10 @@
         </div>
         <div>
             <button [routerLink]="['/app/league', e.id]">View</button>
-            
-            <ng-template *ngIf="screen.isEntreprise">
+
+            <div *ngIf="screen.isEntreprise">
                 <button (click)="joinLeague(e.id)">Join</button>
-            </ng-template>
+            </div>
         </div>
     </div>
 </div>
