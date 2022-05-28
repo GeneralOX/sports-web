@@ -1,1 +1,23 @@
-<router-outlet></router-outlet>
+<div class="main">
+    <div class="menu">
+        <ul>
+            <li><a [routerLink]="['/admin/league']">League</a></li>
+            <li><a [routerLink]="['/admin/terrains']">Terrains</a></li>
+            <li><a [routerLink]="['/admin/matches']">Matches</a></li>
+            <li><a [routerLink]="['/admin/teams']">Teams</a></li>
+            <li>
+                <hr />
+            </li>
+            <li>My Profile</li>
+            <li>
+                <button>
+                    Logout
+                </button>
+            </li>
+
+        </ul>
+    </div>
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+</div>
