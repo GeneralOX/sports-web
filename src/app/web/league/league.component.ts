@@ -9,37 +9,19 @@ import { WebService } from '../web.service';
 })
 export class LeagueComponent implements OnInit {
   myTeamId = 0;
-
-  screen: any = {
-    view: 1,
-    isEntreprise: false,
-    leagueId: -1,
-    leagues: []
-  }
-
+  isEntreprise = false;
+  leagues: any[] = [];
   constructor(private webSerivce: WebService, private route: ActivatedRoute) {
     let user = webSerivce.getUserInfo();
-    this.screen.isEntreprise = (user.role == 0);
+
+    this.isEntreprise = (user.role == 0);
     this.myTeamId = user.team;
   }
 
   ngOnInit() {
-    this.screen.leagueId = this.route.snapshot.paramMap.get('id') ?? "-1";
-    if (this.screen.leagueId == "-1") {
-      this.screen.view = 1;
-      this.webSerivce.getAllLeagues().subscribe((_res) => {
-        this.screen.leagues = _res;
-      })
-    }
-    else {
-      this.screen.view = 2;
-      this.webSerivce.getLeagueDetails(this.screen.leagueId)
-        .subscribe(
-          (_res) => {
-            this.screen.league = _res.league;
-            this.screen.teams = _res.teams;
-          })
-    }
+    this.webSerivce.getAllLeagues().subscribe((_res) => {
+      this.leagues = _res;
+    })
   }
 
   joinLeague(leagueId: number) {
@@ -55,25 +37,10 @@ export class LeagueComponent implements OnInit {
           }
         }
       );
-
   }
 
   // FUNC
   clearDate(e: string) {
     return e.split("T")[0];
-  }
-
-  getTeamName(id: number) {
-    var result;
-    let object = this.screen.teams;
-
-    for (const key in object) {
-      const r = object[key];
-      if (r.id == id) {
-        result = r.name;
-        break;
-      }
-    }
-    return result;
   }
 }

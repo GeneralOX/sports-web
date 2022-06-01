@@ -1,15 +1,18 @@
 <div class="main">
     <div class="menu">
         <ul>
-            <li><a [routerLink]="['/app/league']">Leagues</a></li>
-            <li><a [routerLink]="['/app/match']">Matches</a></li>
+            <li><a [routerLink]="['/app/league']" routerLinkActive="active">Leagues</a></li>
+            <li><a [routerLink]="['/app/match']" routerLinkActive="active">Matches</a></li>
             <!--           
             <li><a [routerLink]="['/app/ranking']">Ranking</a></li> -->
-            <li><a [routerLink]="['/app/team']">my Team</a></li>
+            <li><a [routerLink]="['/app/team']" routerLinkActive="active">my Team</a></li>
+
+            <li><a [routerLink]="['/app/profile']" routerLinkActive="active">My Profile</a></li>
             <li>
-                <hr />
+                <br />
+                <br />
+
             </li>
-            <!-- <li>My Profile</li> -->
             <li>
                 <button (click)="logOut()">
                     Logout

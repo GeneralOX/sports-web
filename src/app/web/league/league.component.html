@@ -1,40 +1,14 @@
 <h1>League</h1>
 
+<div class="league-container">
+    <div class="league" *ngFor="let e of leagues">
+        <img src="assets/Football_League.png" />
+        <b>{{ e.name }}</b>
 
-<div *ngIf="screen.view == 1">
-    <div class="view_Leg" *ngFor="let e of screen.leagues">
-        <div>
-            <p> name: {{e.name}}</p>
-            <p> Start At: {{clearDate(e.startTime)}}</p>
-            <p> End At: {{clearDate(e.endTime)}}</p>
-        </div>
-        <div>
-            <button [routerLink]="['/app/league', e.id]">View</button>
-
-            <div *ngIf="screen.isEntreprise">
-                <button (click)="joinLeague(e.id)">Join</button>
-            </div>
+        <div class="action">
+            <button *ngIf="isEntreprise" (click)="joinLeague(e.id)">Join</button>
+            <button [routerLink]="['/app/match', e.id]">View</button>
+            <button [routerLink]="['/app/rank', e.id]">Rank</button>
         </div>
     </div>
-</div>
-<div *ngIf="screen.view == 2">
-    <h1>Details of League - {{ screen.leagueId }}</h1>
-    <p>
-        <b>START AT: </b><span>{{ clearDate(screen.league.startTime) }}</span>|
-        <b>END AT: </b><span>{{ clearDate(screen.league.endTime) }}</span>
-    </p>
-    <br />
-    <div>
-        <h2>Matches</h2>
-        <div class="match" *ngFor="let match of screen.league.Match">
-            <h2>
-                <a [routerLink]="['/app/match', match.id]">
-                    <b>{{ getTeamName(match.team1Id) }}</b> VS <b> {{ getTeamName(match.team2Id) }} </b>
-                </a>
-            </h2>
-            <b>START AT:</b> {{ clearDate(match.startAt) }} <br />
-            <b>SCORE: </b> {{ match.score == "" ? "0:0" : match.score }}
-        </div>
-    </div>
-
 </div>

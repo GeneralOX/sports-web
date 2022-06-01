@@ -5,13 +5,14 @@ import { TeamComponent } from './team/team.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LeagueComponent } from './league/league.component';
 import { MatchComponent } from './match/match.component';
+import { RankComponent } from './rank/rank.component';
 
 const routes: Routes = [
     {
         path: '', component: HomeComponent,
         children: [
             { path: 'league', component: LeagueComponent },
-            { path: 'league/:id', component: LeagueComponent },
+            { path: 'rank/:id', component: RankComponent },
 
             { path: 'match', component: MatchComponent },
             { path: 'match/:id', component: MatchComponent },

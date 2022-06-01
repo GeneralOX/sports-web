@@ -1,36 +1,22 @@
 <h1>Matches</h1>
 
-<div *ngIf="screen.view == 1">
-
-    <div class="match_list" *ngFor="let e of screen.matches">
-        <div>
-            <p> {{ e.team1.name }} VS {{e.team2.name }}</p>
-            <p> Start At: {{clearDate(e.startAt)}}</p>
-            <p>score: {{e.score}}</p>
+<div class="match-container">
+    <ng-template ngFor let-e [ngForOf]="matches">
+        <div class="match">
+            <div class="left-team" [routerLink]="['/app/team', e.team1.id]">
+                <img src="{{ dataImg[0] }}" alt="">
+                <h4>{{ e.team1.name }}</h4>
+            </div>
+            <div class="st-option">
+                <div class="so-text">{{ e.field.name }}</div>
+                <h4>{{ e.score }}</h4>
+                <div class="so-text">{{ clearDate(e.startAt) }}</div>
+            </div>
+            <div class="right-team" [routerLink]="['/app/team', e.team2.id]">
+                <img src="{{ dataImg[1] }}" alt="">
+                <h4>{{ e.team2.name }}</h4>
+            </div>
         </div>
-        <div>
-            <button [routerLink]="['/app/match', e.id]">View</button>
-        </div>
-    </div>
-</div>
-<div class="match_details" *ngIf="screen.view == 2">
-    <h2>
-        <p> {{ screen.match.team1.name }} VS {{screen.match.team2.name }}</p>
-        <hr />
-        Terrain: <b>{{screen.match.field.name }} </b> <br />
-        startAt: <b>{{ clearDate(screen.match.startAt) }} </b> <br />
-        score: <b>{{screen.match.score == "" ? "0:0" : screen.match.score }}</b> <br />
-    </h2>
+    </ng-template>
 
-    <h3>
-        Players team 1 <a [routerLink]="['/app/team', screen.match.team1.id]">
-            <u>View</u>
-        </a>
-    </h3>
-    <h3>
-        Players team 2 <a [routerLink]="['/app/team', screen.match.team2.id]">
-            <u>View</u>
-        </a>
-    </h3>
-   
 </div>

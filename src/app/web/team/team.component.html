@@ -1,43 +1,80 @@
-<div class="noTeam" *ngIf="!app.hasTeam && !app.isPlayer">
+<div class="noTeam" *ngIf="usr.myTeam == null && usr.isEntreprise">
     <p>You don't have team <b>Make one now!</b></p>
-    <button (click)="app.createTeam = true">Create</button>
+    <button (click)="createTeamModel = true">Create</button>
 </div>
-<div class="teamCreate" *ngIf="app.createTeam">
+<div class="teamCreate" *ngIf="createTeamModel">
     <form (ngSubmit)="createTeam()">
-        <input type="text" name="name" [(ngModel)]="app.createTeamName" placeholder="team name" />
+        <input type="text" name="name" [(ngModel)]="createTeamName" placeholder="team name" />
         <p style="width: 10px;"></p>
         <button>Create</button>
     </form>
 </div>
-<div class="details" *ngIf="details != null">
-    <h3 class="teamName">{{ details.name }}</h3>
 
-    <button *ngIf="app.myTeam">Add player</button>
-    <div class="addPlayer">
-        <form (ngSubmit)="addPlayer()">
-            <input type="text" [(ngModel)]="addPlayerModel.name" placeholder="name" name="name" />
-            <input type="text" [(ngModel)]="addPlayerModel.email"  placeholder="email" name="email" />
-            <button>ADD</button>
-        </form>
+
+
+<div class="club" *ngIf="details != null">
+    <div class="club-header">
+        <div class="club-img">
+            <img src="assets/club-logo.webp" />
+        </div>
+        <div class="club-details">
+            <h1>{{ details.name }}</h1>
+            <div class="club-data">
+                <div>
+                    <b>Established</b>
+                    <p>Since 1987</p>
+                </div>
+                <div>
+                    <b>Former President</b>
+                    <p>John Martin</p>
+                </div>
+                <div>
+                    <b>Leader</b>
+                    <p>{{ getTeamLeader() }}</p>
+                </div>
+            </div>
+            <div class="club-action" *ngIf="usr.allowEdit">
+                <button (click)="deleteTeam()">Delete</button>
+                <button (click)="openModel = true">Add player</button>
+            </div>
+        </div>
     </div>
+    <h2 style="text-align: center;">Players</h2>
+    <div class="club-team">
+        <div class="player" *ngFor="let pl of details.players">
+            <img src="assets/p-1.webp" />
+            <div class="description">
+                <h3>{{ pl.id }}# {{ pl.name }}</h3>
+                <p>
+                    age: {{ pl.age }} ||
+                    phone: {{ pl.phone }}
+                </p>
+            </div>
 
 
-    <table>
-        <tr>
-            <th>Player name</th>
-            <th>Age</th>
-            <th>Position</th>
-            <th></th>
-        </tr>
-        <tr *ngFor="let pl of details.players">
-            <td>{{pl.name}}</td>
-            <td>{{pl.age}}</td>
-            <td>{{pl.position}}</td>
-            <td class="tags">
-                <b class="leader" *ngIf="pl.isLeader">Leader</b>
-                <b class="stuff" *ngIf="pl.role == 1">Stuff</b>
-                <b class="player" *ngIf="pl.role == 2">player</b>
-            </td>
-        </tr>
-    </table>
+            <b>{{ pl.position }}</b>
+            <div>
+                <button *ngIf="usr.allowEdit" (click)="makeLeader(pl.id)">Leader</button>
+                <button *ngIf="usr.allowEdit" (click)="deletePlayer(pl.id)">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modelBox" *ngIf="openModel">
+    <div class="modelBoxContent">
+        <h2>Add Player</h2>
+        <br />
+        <form (ngSubmit)="addPlayer()">
+            <label for="name">Name:</label>
+            <input type="text" [(ngModel)]="addPlayerModel.name" placeholder="name" name="name" />
+            <label for="email">Email:</label>
+            <input type="text" [(ngModel)]="addPlayerModel.email" placeholder="email" name="email" />
+            <br />
+            <button>Add player</button>
+
+
+        </form>
+        <button (click)="openModel = false">Cancel</button>
+    </div>
 </div>

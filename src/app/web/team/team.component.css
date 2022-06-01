@@ -57,3 +57,95 @@
     background-color: #b2ebf2;
     border: 2px solid #80deea;
 }
+
+
+/**************************/
+.club {
+    max-width: 1000px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.club-header,
+.club-details,
+.club-data,
+.player {
+    display: flex;
+    width: 100%;
+}
+
+.club-header {
+    width: 100%;
+    background-color: white;
+    padding: 35px;
+}
+
+.club-details {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.club-data {
+    justify-content: space-around;
+}
+.club-action{
+    margin-top: 40px;
+}
+.club-action button {
+    margin: 10px;
+}
+
+.player {
+    margin: 10px 0px;
+    padding: 5px 10px;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+}
+
+.player .description {
+    flex: 1;
+    margin: 0 15px;
+}
+
+.player .description h3 {
+    margin: 0;
+}
+
+/*******/
+.modelBox {
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: #000000b3;
+}
+
+.modelBox,
+.modelBoxContent,
+.modelBoxContent form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modelBoxContent,
+.modelBoxContent form {
+    flex-direction: column;
+}
+
+.modelBoxContent {
+    height: 450px;
+    width: 400px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.modelBoxContent input {
+    display: block;
+    padding: 5px;
+}

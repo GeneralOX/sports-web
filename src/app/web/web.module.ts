@@ -9,6 +9,7 @@ import { WebService } from './web.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatchComponent } from './match/match.component';
 import { FormsModule } from '@angular/forms';
+import { RankComponent } from './rank/rank.component';
 
 
 
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     TeamComponent,
     ProfileComponent,
     LeagueComponent,
-    MatchComponent
+    MatchComponent,
+    RankComponent
   ],
   imports: [
     CommonModule,

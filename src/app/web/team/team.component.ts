@@ -8,85 +8,136 @@ import { WebService } from '../web.service';
   styleUrls: ['./team.component.css']
 })
 export class TeamComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private webService: WebService) { }
 
-  app = {
-    isPlayer: false,
-    hasTeam: false,
-    teamId: -1,
-    myTeam: true,
-    createTeam: false,
-    createTeamName: ""
+  usr = {
+    isEntreprise: false,
+    isThisMyTeam: false,
+    allowEdit: false,
+    myTeam: -1,
+    requestedTeam: -1,
   }
+
+  createTeamName = "";
+  createTeamModel = false;
+
+  openModel = false;
+  details: any = null;
 
   addPlayerModel = {
     name: "",
     email: "",
     teamId: 0,
   }
-  details: any = null;
+
+  constructor(private route: ActivatedRoute, private webService: WebService) { }
+
+
 
   ngOnInit(): void {
-    // check if player or entreprise
-    let user = this.webService.getUserInfo();
-    if (user) {
-      this.app.isPlayer = (user.role != 0);
-      this.app.hasTeam = (user.team != null);
-      this.app.teamId = user.team;
-    }
-    // Check requested team
+    this.loaduserInfo();
+
     let tmId = this.route.snapshot.paramMap.get('id');
-    if (tmId != null) {
-      this.app.myTeam = (this.app.teamId == Number(tmId));
-      this.app.teamId = Number(tmId);
-    }
+    if (tmId != null)
+      this.usr.requestedTeam = Number(tmId);
 
-    // requestTeamInfo
-    if (this.app.teamId != null)
+    this.usr.isThisMyTeam = (this.usr.requestedTeam == this.usr.myTeam);
+    this.usr.allowEdit = (this.usr.isThisMyTeam && this.usr.isEntreprise);
+
+    if (this.usr.requestedTeam != null)
       this.loadTeamInfo();
+  }
 
+  loaduserInfo() {
+    let user = this.webService.getUserInfo();
+
+    this.usr.isEntreprise = (user.role == 0);
+    this.usr.myTeam = user.team;
+    this.usr.requestedTeam = user.team;
+  }
+
+  getTeamLeader() {
+    let leader = "None";
+    (this.details.players as Array<any>)
+      .forEach((v) => {
+        if (v.isLeader)
+          leader = v.name;
+      })
+    return leader;
+  }
+  
+  makeLeader(id: any) {
+    this.webService.setLeader({ teamId: this.usr.myTeam, userId: id })
+      .subscribe(
+        (r) => {
+          this.loadTeamInfo();
+          alert("New Leader set")
+        }
+      );
   }
 
   loadTeamInfo() {
-    this.webService.getTeamDetails(this.app.teamId)
+    this.webService.getTeamDetails(this.usr.requestedTeam)
       .subscribe((res) => this.details = res);
   }
 
   createTeam() {
-    this.webService.createTeam(this.app.createTeamName).subscribe(
+    this.webService.createTeam(this.createTeamName).subscribe(
       (res: any) => {
-        this.app.hasTeam = true;
-        this.app.teamId = res.teamId;
-        this.app.createTeam = false;
+        this.createTeamModel = false;
 
         // update Localstorage
         let user = this.webService.getUserInfo();
         user.team = res.teamId;
         this.webService.setUserInfo(user);
-
-        // Reload teamInfo
-        this.details = {
-          id: res.id,
-          name: this.app.createTeamName,
-          players: []
-        };
+        this.ngOnInit();
       },
       (err) => {
-        console.log(err);
+        alert(err);
       }
     );
   }
 
+  deleteTeam() {
+    this.webService.deleteTeam(this.usr.myTeam).subscribe(
+      (r: any) => {
+        alert(r.message);
+        let user = this.webService.getUserInfo();
+        user.team = null;
+        this.webService.setUserInfo(user);
+        window.location.reload();
+      });
+  }
+
   addPlayer() {
     // append team id to the json
-    this.addPlayerModel.teamId = this.app.teamId;
+    this.addPlayerModel.teamId = this.usr.myTeam;
 
     // Send data to server
     this.webService.addPlayerToTeam(this.addPlayerModel)
       .subscribe(
         (res) => {
-          console.log(res);
+          this.loadTeamInfo();
+          this.openModel = false;
+        },
+        (err) => {
+          console.log(err);
         }
       )
   }
+
+  deletePlayer(id: number) {
+    this.webService.deletePlayer(id).subscribe(
+      (r: any) => {
+        this.loadTeamInfo();
+        alert(r.message);
+      },
+      (err) => {
+        alert("Error please try again!");
+      }
+
+    );
+  }
+
+
+
 }

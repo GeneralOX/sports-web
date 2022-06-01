@@ -1,0 +1,29 @@
+.updateContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+.updateContainer form{
+    display: flex;
+    flex-direction: column;
+    padding: 50px 50px;
+    background: ghostwhite;
+    box-shadow: 0px 6px 15px 0px #7c7c7c;
+    border-radius: 8px;
+}
+.updateContainer form input{
+    margin: 5px;
+    padding: 5px 10px;
+    border: 2px solid #888;
+    border-radius: 5px;
+}
+
+.updateContainer form button{
+    margin: 5px;
+    padding: 5px 5px;
+    border: 2px solid #888;
+    border-radius: 5px;
+    cursor: pointer;
+}

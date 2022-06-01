@@ -1,1 +1,25 @@
-<p>profile works!</p>
+<div class="updateContainer">
+    <form (ngSubmit)="onSubmit()" *ngIf="IsPlayerModel">
+        <h3 style="text-align: center;">UPDATE PROFILE</h3>
+        <hr />
+        <input type="text" [(ngModel)]="form.age" name="age" placeholder="age" />
+        <input type="text" [(ngModel)]="form.phone" name="phone" placeholder="phone" />
+        <input type="text" [(ngModel)]="form.position" name="position" placeholder="position" />
+        <input type="password" [(ngModel)]="form.password" name="password" placeholder="new password" />
+        <hr />
+
+        <button>Update</button>
+        <button>Block</button>
+    </form>
+
+    <form (ngSubmit)="onSubmit()" *ngIf="!IsPlayerModel">
+        <h3 style="text-align: center;">UPDATE PROFILE</h3>
+        <hr />
+        <input type="text" [(ngModel)]="entreForm.name" name="name" placeholder="name" />
+        <input type="text" [(ngModel)]="entreForm.email" name="email" placeholder="name" />
+        <input type="password" [(ngModel)]="entreForm.password" name="password" placeholder="new password" />
+        <hr />
+        <button>Update</button>
+        <button>Block</button>
+    </form>
+</div>

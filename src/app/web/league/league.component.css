@@ -1,19 +1,27 @@
-.view_Leg {
-    background-color: antiquewhite;
-    padding: 10px 25px;
-    border-radius: 5px;
-    margin: 10px 0;
+.league-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.league {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-.match{
-    background-color: cadetblue;
-    padding: 10px;
+    background-color: white;
+    padding: 10px 15px;
     border-radius: 5px;
-    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
 }
-.match > h2{
-    color: black;
-    text-align: center;
+.action button{
+    margin: 0 5px;
+}
+
+.league img {
+    height: 30px;
+}
+
+.league b {
+    flex: 1;
+    margin: 0 15px;
 }
