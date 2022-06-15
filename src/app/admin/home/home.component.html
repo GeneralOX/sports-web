@@ -1,16 +1,14 @@
 <div class="main">
     <div class="menu">
         <ul>
-            <li><a [routerLink]="['/admin/league']">League</a></li>
-            <li><a [routerLink]="['/admin/terrains']">Terrains</a></li>
-            <li><a [routerLink]="['/admin/matches']">Matches</a></li>
-            <li><a [routerLink]="['/admin/teams']">Teams</a></li>
+            <li><a [routerLink]="['/admin/league']" routerLinkActive="active">League</a></li>
+            <li><a [routerLink]="['/admin/terrain']" routerLinkActive="active">Terrains</a></li>
+            <li><a [routerLink]="['/admin/match']" routerLinkActive="active">Matches</a></li>
+            <li><a [routerLink]="['/admin/profile']" routerLinkActive="active">Profile</a></li>
+            <li><br /></li>
+            <li><br /></li>
             <li>
-                <hr />
-            </li>
-            <li>My Profile</li>
-            <li>
-                <button>
+                <button (click)="logout()">
                     Logout
                 </button>
             </li>

@@ -2,6 +2,8 @@
     <p>You don't have team <b>Make one now!</b></p>
     <button (click)="createTeamModel = true">Create</button>
 </div>
+
+
 <div class="teamCreate" *ngIf="createTeamModel">
     <form (ngSubmit)="createTeam()">
         <input type="text" name="name" [(ngModel)]="createTeamName" placeholder="team name" />
@@ -9,55 +11,81 @@
         <button>Create</button>
     </form>
 </div>
-
-
-
-<div class="club" *ngIf="details != null">
-    <div class="club-header">
-        <div class="club-img">
-            <img src="assets/club-logo.webp" />
+<div class="club-header" *ngIf="details != null"    >
+    <div class="club-img">
+        <img src="assets/club-logo.webp" />
+    </div>
+    <div class="club-details">
+        <h1>{{ details.name }}</h1>
+        <div class="club-data">
+            <div>
+                <b>Established</b>
+                <p>Since 1987</p>
+            </div>
+            <div>
+                <b>Former President</b>
+                <p>John Martin</p>
+            </div>
+            <div>
+                <b>Leader</b>
+                <p>{{ getTeamLeader() }}</p>
+            </div>
         </div>
-        <div class="club-details">
-            <h1>{{ details.name }}</h1>
-            <div class="club-data">
-                <div>
-                    <b>Established</b>
-                    <p>Since 1987</p>
-                </div>
-                <div>
-                    <b>Former President</b>
-                    <p>John Martin</p>
-                </div>
-                <div>
-                    <b>Leader</b>
-                    <p>{{ getTeamLeader() }}</p>
-                </div>
-            </div>
-            <div class="club-action" *ngIf="usr.allowEdit">
-                <button (click)="deleteTeam()">Delete</button>
-                <button (click)="openModel = true">Add player</button>
-            </div>
+        <div class="club-action" *ngIf="usr.allowEdit">
+            <button (click)="deleteTeam()">Delete</button>
+            <button (click)="openModel = true">Add player</button>
         </div>
     </div>
-    <h2 style="text-align: center;">Players</h2>
-    <div class="club-team">
-        <div class="player" *ngFor="let pl of details.players">
-            <img src="assets/p-1.webp" />
-            <div class="description">
-                <h3>{{ pl.id }}# {{ pl.name }}</h3>
-                <p>
-                    age: {{ pl.age }} ||
-                    phone: {{ pl.phone }}
-                </p>
-            </div>
-
-
-            <b>{{ pl.position }}</b>
-            <div>
-                <button *ngIf="usr.allowEdit" (click)="makeLeader(pl.id)">Leader</button>
-                <button *ngIf="usr.allowEdit" (click)="deletePlayer(pl.id)">Delete</button>
+</div>
+<div class="rs-team style5 pt-100 md-pt-80" *ngIf="details != null">
+    <div class="container">
+        <div class="row pb-100 md-pb-80">
+            <div class="col-lg-4 col-md-6 mb-30" *ngFor="let pl of details.players">
+                <div class="team-grid">
+                    <div class="team-image">
+                        <img src="assets/images/team/1.jpg" alt="">
+                    </div>
+                    <div class="text-bottom">
+                        <h4 class="person-name">
+                            <a href="#">{{ pl.id }}# {{ pl.name }}</a>
+                        </h4>
+                        <span class="designation">{{ pl.position }}</span>
+                        <div class="social-links">
+                            <ul>
+                                <li>
+                                    <button *ngIf="usr.allowEdit" (click)="makeLeader(pl.id)">Leader</button>
+                                </li>
+                                <li>
+                                    <button *ngIf="usr.allowEdit" (click)="deletePlayer(pl.id)">Delete</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <!-- Subscribe Section Start -->
+        <div class="rs-subscribe bg7">
+            <form class="subscribe-form">
+                <div class="row rs-vertical-middle">
+                    <div class="col-lg-6 col-md-12 md-mb-30">
+                        <div class="title-part">
+                            <h2 class="title white-color"> Subscribe Our Newsletter</h2>
+                            <p class="desc margin-0 white-color"> Subscribe to our newsletter for getting regular
+                                updates.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="subscribe-form-fields">
+                            <input type="submit" class="news-submit" value="Subscribe">
+                            <input type="email" class="news-email" name="EMAIL" placeholder="EMAIL ADDRESS" required="">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- Subscribe Section End -->
     </div>
 </div>
 

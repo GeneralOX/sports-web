@@ -1,0 +1,22 @@
+table tr th,
+table tr td {
+    padding: 10px;
+    text-align: center;
+    min-width: 150px;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+
+.terrainView,
+.terrainAction {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    margin: 10px;
+    padding: 10px 0;
+    border-radius: 5px;
+}
+
+.terrainAction {
+    padding: 25px;
+}

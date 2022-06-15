@@ -9,12 +9,14 @@ import { LeagueComponent } from './league/league.component';
 import { AdminRouting } from './admin.routing';
 import { AdminService } from './admin.service';
 import { TerrainComponent } from './terrain/terrain.component';
+import { MatchComponent } from './match/match.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     LeagueComponent,
-    TerrainComponent
+    TerrainComponent,
+    MatchComponent
   ],
   imports: [
     CommonModule,

@@ -56,8 +56,8 @@
 }
 
 .left-team:hover,
-.right-team:hover {
+.right-team:hover,
+td.logo:hover {
     cursor: pointer;
-    color: antiquewhite;
+    color: rgb(5, 202, 22);
 }
-

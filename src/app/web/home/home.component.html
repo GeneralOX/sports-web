@@ -1,10 +1,10 @@
-<div class="main">
+<!-- <div class="main">
     <div class="menu">
         <ul>
             <li><a [routerLink]="['/app/league']" routerLinkActive="active">Leagues</a></li>
             <li><a [routerLink]="['/app/match']" routerLinkActive="active">Matches</a></li>
-            <!--           
-            <li><a [routerLink]="['/app/ranking']">Ranking</a></li> -->
+                      
+            <li><a [routerLink]="['/app/ranking']">Ranking</a></li> 
             <li><a [routerLink]="['/app/team']" routerLinkActive="active">my Team</a></li>
 
             <li><a [routerLink]="['/app/profile']" routerLinkActive="active">My Profile</a></li>
@@ -24,4 +24,141 @@
     <div class="content">
         <router-outlet></router-outlet>
     </div>
+</div> -->
+<!--Full width header Start-->
+<div class="full-width-header">
+    <!--Header Start-->
+    <header id="rs-header" class="rs-header homestyle dark-sticky">
+        <!-- Menu Start -->
+        <div class="menu-area menu-sticky">
+            <div class="container-fluid">
+                <div class="row rs-vertical-middle">
+                    <div class="col-lg-2">
+                        <div class="logo-area">
+                            <a href="index.html"><img src="images/logo.png" alt="logo"></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 mobile-menu-area">
+                        <div class="rs-menu-area display-flex-center">
+                            <div class="main-menu">
+                                <a class="rs-menu-toggle">
+                                    <i class="fa fa-bars"></i>
+                                </a>
+                                <nav class="rs-menu">
+                                    <div class="expand-btn" style="display: flex;
+                                    align-items: center;">
+                                        <button class="btn" style="margin-right:15px;" (click)="logOut()">
+                                            <p> Logout</p>
+                                        </button>
+                                        <span>
+                                            <a id="nav-expander" class="nav-expander">
+                                                <ul class="offcanvas-icon">
+                                                    <li>
+                                                        <span class="hamburger1"></span>
+                                                        <span class="hamburger2"></span>
+                                                        <span class="hamburger3"></span>
+                                                    </li>
+                                                </ul>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <ul class="nav-menu text-right">
+                                        <li>
+                                            <a [routerLink]="['/app/']">Home</a>
+                                        </li>
+
+                                        <li routerLinkActive="current-menu-item">
+                                            <a [routerLink]="['/app/league']">Leagues</a>
+                                        </li>
+                                        <li routerLinkActive="current-menu-item ">
+                                            <a [routerLink]="['/app/match']">Matches</a>
+                                        </li>
+                                        <!-- <li routerLinkActive="current-menu-item ">
+                                            <a [routerLink]="['/app/ranking']">Ranking</a>
+                                        </li> -->
+                                        <li routerLinkActive="current-menu-item ">
+                                            <a [routerLink]="['/app/team']"> my Team </a>
+                                        </li>
+                                        <li routerLinkActive="current-menu-item ">
+                                            <a [routerLink]="['/app/profile']">
+                                                My Profile
+                                            </a>
+                                        </li>
+                                    </ul> <!-- //.nav-menu -->
+                                </nav>
+                            </div> <!-- //.main-menu -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Menu End -->
+
+        <!-- Canvas Menu start -->
+        <nav class="right_menu_togle hidden-md">
+            <div class="close-btn"><span id="nav-close" class="text-center"><i class="flaticon-cross"></i></span></div>
+            <div class="canvas-logo">
+                <a href="index.html"><img src="images/logo-dark.png" alt="logo"></a>
+            </div>
+            <div class="sidebarnav_menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="match-fixtures.html">Match Fixtures</a></li>
+                    <li><a href="blog.html">News</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="canvas-contact">
+                <h5 class="canvas-contact-title">Contact Info</h5>
+                <ul class="contact">
+                    <li><i class="fa fa-globe"></i>New York, USA</li>
+                    <li><i class="fa fa-phone"></i><a href="tel:+125427263512">+125427263512</a></li>
+                    <li><i class="fa fa-envelope"></i><a href="mailto:support@rstheme.com">support@rstheme.com</a></li>
+                </ul>
+                <ul class="social">
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Canvas Menu end -->
+    </header>
+    <!--Header End-->
+</div>
+<!--Full width header End-->
+
+<!-- Banner Section Start -->
+<div id="rs-banner" class="rs-banner home4banner">
+    <div class="container-fluid">
+        <div class="row rs-vertical-middle">
+            <div class="col-md-6">
+                <div class="banner-content">
+                    <h1 class="title white-color uppercase">Khelo Global <br> Club Fd</h1>
+                    <div class="desc white-color">
+                        We create Premium Html Themes for more than three years <br> Our team goal is to reunite the
+                        elegance of unique.
+                    </div>
+                    <div class="btn-slider">
+                        <a href="#" class="readon solid">Book A Ticket</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 text-center hidden-sm">
+                <div class="layer-img">
+                    <ul>
+                        <li><img class="ball animate1" src="images/banner/ball.png" alt=""></li>
+                        <li><img class="man animate2" src="images/banner/man.png" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Banner Section End -->
+<div>
+    <router-outlet></router-outlet>
 </div>

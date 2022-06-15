@@ -1,22 +1,55 @@
-<h1>Matches</h1>
+<div style="display: flex;margin: 50px auto;justify-content: center;">
+    <h1>Matches</h1>
+</div>
+<div class="rs-result inner  md-pt-80">
+    <div class="container">
+        <div class="result-info pb-100 md-pb-80">
+            <table class="result-table">
+                <tbody>
+                    <ng-template ngFor let-e [ngForOf]="matches">
 
-<div class="match-container">
-    <ng-template ngFor let-e [ngForOf]="matches">
-        <div class="match">
-            <div class="left-team" [routerLink]="['/app/team', e.team1.id]">
-                <img src="{{ dataImg[0] }}" alt="">
-                <h4>{{ e.team1.name }}</h4>
-            </div>
-            <div class="st-option">
-                <div class="so-text">{{ e.field.name }}</div>
-                <h4>{{ e.score }}</h4>
-                <div class="so-text">{{ clearDate(e.startAt) }}</div>
-            </div>
-            <div class="right-team" [routerLink]="['/app/team', e.team2.id]">
-                <img src="{{ dataImg[1] }}" alt="">
-                <h4>{{ e.team2.name }}</h4>
-            </div>
+                        <tr>
+                            <td class="logo" [routerLink]="['/app/team', e.team1.id]">
+                                <img class="size-60" src="{{ dataImg[0] }}" alt="">
+                                Real Madrid
+                            </td>
+                            <td>
+                                <span class="total-goal">
+                                    {{ e.score }}
+                                </span>
+                            </td>
+                            <td class="logo" [routerLink]="['/app/team', e.team2.id]">
+                                <img class="size-60" src="{{ dataImg[1] }}" alt="">
+                                Atletico Madrid
+                            </td>
+                            <td>{{ clearDate(e.startAt) }}</td>
+                            <!-- <td><a href="#" class="readon">View Statictics</a></td> -->
+                        </tr>
+                    </ng-template>
+                </tbody>
+            </table>
         </div>
-    </ng-template>
 
+        <!-- Subscribe Section Start -->
+        <div class="rs-subscribe bg7">
+            <form class="subscribe-form">
+                <div class="row rs-vertical-middle">
+                    <div class="col-lg-6 col-md-12 md-mb-30">
+                        <div class="title-part">
+                            <h2 class="title white-color"> Subscribe Our Newsletter</h2>
+                            <p class="desc margin-0 white-color"> Subscribe to our newsletter for getting regular
+                                updates.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="subscribe-form-fields">
+                            <input type="submit" class="news-submit" value="Subscribe">
+                            <input type="email" class="news-email" name="EMAIL" placeholder="EMAIL ADDRESS" required="">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- Subscribe Section End -->
+    </div>
 </div>

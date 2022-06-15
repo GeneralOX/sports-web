@@ -26,10 +26,12 @@ export class AdminService {
     }
 
     /* ******* */
+    addLeague(data: any) {
+        return this.http.post<any>(`${this.configUrl}/league`, data);
+    }
     getAllLeagues() {
         return this.http.get<any>(`${this.configUrl}/league`);
     }
-
     getLeagueDetails(id: any) {
         return this.http.get<any>(`${this.configUrl}/league/${id}`);
     }
@@ -40,5 +42,36 @@ export class AdminService {
     }
     confirmJoin(data: any) {
         return this.http.post<any>(`${this.configUrl}/ranking/confirm`, data, this.httpHeader);
+    }
+    blockTeam(data: any) {
+        return this.http.post<any>(`${this.configUrl}/ranking/block`, data, this.httpHeader);
+
+    }
+
+    /* ******* */
+    loadTerrains() {
+        return this.http.get<any>(`${this.configUrl}/field`);
+    }
+    addTerain(data: any) {
+        return this.http.post<any>(`${this.configUrl}/field`, data, this.httpHeader);
+    }
+    deleteTerrain(id: any) {
+        return this.http.delete<any>(`${this.configUrl}/field/${id}`, this.httpHeader);
+    }
+    /* ****** */
+    getleagueData(id: any) {
+        return this.http.get<any>(`${this.configUrl}/league/allData/${id}`, this.httpHeader);
+    }
+    getAvailableField(date: string) {
+        return this.http.get<any>(`${this.configUrl}/field/available/${date}`, this.httpHeader);
+    }
+
+
+    /* ******* */
+    addMatch(data: any) {
+        return this.http.post<any>(`${this.configUrl}/match`, data, this.httpHeader);
+    }
+    setResult(data: any) {
+        return this.http.post<any>(`${this.configUrl}/ranking/result`, { result: data }, this.httpHeader);
     }
 }

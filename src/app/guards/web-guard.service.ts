@@ -5,6 +5,8 @@ export class WebGuardService implements CanActivate {
     constructor(public router: Router) { }
 
     canActivate(): boolean {
+        console.log("Check if user loged => ", this.isAuthenticated())
+
         if (!this.isAuthenticated()) {
             this.router.navigate(['/auth']);
             return false;
@@ -12,16 +14,10 @@ export class WebGuardService implements CanActivate {
         return true;
     }
 
-
     isAuthenticated() {
         var e = localStorage.getItem("user");
-        console.log(e)
-        if (e) {
-            var user = JSON.parse(e);
-            if (user) {
-                return true;
-            }
-        }
+        if (e)
+            if (JSON.parse(e)) return true;
         return false;
     }
 }

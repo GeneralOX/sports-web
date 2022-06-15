@@ -9,12 +9,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { RegisterLinkComponent } from './register-link/register-link.component';
+import { AdminComponent } from './admin/admin.component';
 @NgModule({
   declarations: [
     RegisterComponent,
     PlayerComponent,
     EntrepriseComponent,
     RegisterLinkComponent,
+    AdminComponent,
   ],
   imports: [
     CommonModule,

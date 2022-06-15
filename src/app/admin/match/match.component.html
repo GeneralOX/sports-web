@@ -1,0 +1,93 @@
+<h1>Matches Of #{{ LeagueInfo.name }}</h1>
+
+<h4>Matches</h4>
+<div class="view">
+    <div>
+        <ng-template ngFor let-e [ngForOf]="Matches">
+            <div class="match-container">
+                <div class="so-field">
+                    {{ e.field.name }}
+
+                </div>
+                <button (click)="selectMatch(e.id, e.league.id, e.team1.id, e.team2.id)">Set Result</button>
+                <div class="match">
+                    <div class="left-team">
+                        <!-- <img src="{{ dataImg[0] }}" alt=""> -->
+                        <h4>{{ e.team1.name }}</h4>
+                    </div>
+                    <div class="st-option">
+                        <div class="so-text">
+                            <b>{{ getDate(e.startAt) }}</b>
+                        </div>
+                        <h4>{{ e.score }}</h4>
+                        <div class="so-text">
+                            <b>{{getTime(e.startAt) }}</b>
+                        </div>
+                    </div>
+                    <div class="right-team">
+                        <!-- <img src="{{ dataImg[1] }}" alt=""> -->
+                        <h4>{{ e.team2.name }}</h4>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+    <div>
+        <h2>New Match</h2>
+        <div class="newMatchView" *ngIf="newMatchView == 1">
+            <div>
+                <label for="">Team 1: </label>
+                <select [(ngModel)]="form.team1">
+                    <ng-template ngFor let-e [ngForOf]="Teams">
+                        <option [value]="e.id"> {{ e.name }} </option>
+                    </ng-template>
+                </select>
+            </div>
+            <b>VS</b>
+            <div>
+                <label for="">Team 2 : </label>
+                <select [(ngModel)]="form.team2">
+                    <ng-template ngFor let-e [ngForOf]="Teams">
+                        <option [value]="e.id"> {{ e.name }} </option>
+                    </ng-template>
+                </select>
+            </div>
+            <br />
+            <label> Date: </label>
+            <input [(ngModel)]="form.date" />
+            <br />
+            <button (click)="selectField()">Select Terrain</button>
+        </div>
+        <div class="newMatchView" *ngIf="newMatchView == 2">
+            <div class="avalTime" *ngFor="let e of availableField">
+                <h4> {{ e.name }}</h4>
+                <div>
+                    <div *ngFor="let t of e.time">
+                        <b>{{ t }}</b>
+                        <button (click)="selectTime(t, e.id)">SELECT</button>
+                    </div>
+                </div>
+            </div>
+            <p>
+
+
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modelBox" *ngIf="openModel">
+    <div class="modelBoxContent">
+        <form (ngSubmit)="setResult()">
+            <label for="name">Result:</label>
+            <input type="text" [(ngModel)]="result" placeholder="name" name="name" />
+            <br />
+            <button>set result</button>
+
+
+        </form>
+        <button (click)="openModel = false">Cancel</button>
+    </div>
+</div>

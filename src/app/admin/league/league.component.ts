@@ -10,25 +10,30 @@ import { AdminService } from '../admin.service';
 export class LeagueComponent implements OnInit {
 
   isMain = true;
+  constructor(private adminService: AdminService, private route: ActivatedRoute) { }
+  ngOnInit() {
+    let leagueId = this.route.snapshot.paramMap.get('id');
+    this.isMain = (leagueId == null);
 
-  leagues: any[] = [];
-  details: any = { league: {}, rank: [] };
-  constructor(private adminService: AdminService, private route: ActivatedRoute) {
-    // let user = adminSerivce.getUserInfo();
-    // this.myTeamId = user.team;
+    if (this.isMain)
+      this.LoadLeagues();
+    else
+      this.LoadLeagueRank(Number(leagueId));
   }
 
-  ngOnInit() {
-    this.details.leagueId = this.route.snapshot.paramMap.get('id') ?? "-1";
+  // MAIN
+  openModel = false;
+  leagues: any = [];
+  addLeagueForm: any = {};
 
-    if (this.details.leagueId == "-1") {
-      this.isMain = true;
-      this.LoadLeagues();
-    }
-    else {
-      this.isMain = false;
-      this.LoadLeagueRank(Number(this.details.leagueId));
-    }
+  addLeague() {
+    this.adminService.addLeague(this.addLeagueForm)
+      .subscribe(
+        (r) => {
+          this.leagues.push(r);
+          this.openModel = false;
+        }
+      )
   }
 
   LoadLeagues() {
@@ -41,14 +46,24 @@ export class LeagueComponent implements OnInit {
       )
   }
 
+  // League Details
+  LeagueInfo: any = {};
+  ActiveLeague: any = [];
+  PendingLeague: any = [];
+
   LoadLeagueRank(id: number) {
     this.adminService.getRanking(id)
       .subscribe(
         (r: any) => {
-          this.details.league = r.league;
-          this.details.rank = (r.rank as Array<any>)
+          this.LeagueInfo = r.league;
+
+          this.ActiveLeague = (r.rank as Array<any>)
+            .filter((v) => v.status)
             .sort((a, b) => b.Rank - a.Rank);
-          console.log(r)
+
+          this.PendingLeague = (r.rank as Array<any>)
+            .filter((v) => !v.status)
+            .sort((a, b) => b.Rank - a.Rank);
         })
   }
 
@@ -57,12 +72,23 @@ export class LeagueComponent implements OnInit {
       .confirmJoin({ rankId: id })
       .subscribe(
         (r: any) => {
-          this.LoadLeagueRank(this.details.leagueId)
+          this.LoadLeagueRank(id)
+          alert(r.message)
+        }
+      )
+  }
+  blockTeam(id: number) {
+    this.adminService
+      .blockTeam({ rankId: id })
+      .subscribe(
+        (r: any) => {
+          this.LoadLeagueRank(id)
           alert(r.message)
         }
       )
   }
 
+  // FUNC
   clearDate(e: string) {
     if (e != undefined)
       return e.split("T")[0];

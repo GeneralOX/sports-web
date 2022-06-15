@@ -1,9 +1,59 @@
-<h1>Rank Of # {{ league.name }}</h1>
+<!-- <h1>Rank Of # {{ league.name }}</h1> -->
 
-<div class="rank-container">
-    <div class="rank" *ngFor="let e of rank">
-        <img src="assets/club-logo.webp" />
-        <p>{{ e.team.name }}</p>
-        <b>#{{ e.Rank }}</b>
+<div class="rs-pointtable inner-style pt-100 md-pt-80 md-pb-80">
+    <div class="container">
+        <div class="point-table-wrap pb-100 md-pb-80">
+            <table>
+                <tbody>
+                    <tr>
+                        <th></th>
+                        <th>Team</th>
+                        <th>P</th>
+                        <th>W</th>
+                        <th>D</th>
+                        <th>L</th>
+                        <th>GS</th>
+                        <th>GA</th>
+                        <th>GD</th>
+                        <th>PTS</th>
+                    </tr>
+                    <tr *ngFor="let e of rank">
+                        <td>1</td>
+                        <td>{{ e.team.name }} </td>
+                        <td>{{ e.Rank }}</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                  
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Subscribe Section Start -->
+        <div class="rs-subscribe bg7 md-margin-0">
+            <form class="subscribe-form">
+                <div class="row rs-vertical-middle">
+                    <div class="col-lg-6 col-md-12 md-mb-30">
+                        <div class="title-part">
+                            <h2 class="title white-color"> Subscribe Our Newsletter</h2>
+                            <p class="desc margin-0 white-color"> Subscribe to our newsletter for getting regular
+                                updates.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="subscribe-form-fields">
+                            <input type="submit" class="news-submit" value="Subscribe">
+                            <input type="email" class="news-email" name="EMAIL" placeholder="EMAIL ADDRESS" required="">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- Subscribe Section End -->
     </div>
 </div>

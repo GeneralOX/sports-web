@@ -1,47 +1,92 @@
 <div *ngIf="isMain">
     <h1> Leagues </h1>
-    <button>Add League</button>
+    <button (click)="openModel = true">Add League</button>
+    <br />
     <br />
     <table>
         <tr>
             <th>League Name</th>
+            <th>Start At</th>
+            <th>End At</th>
             <th>op</th>
         </tr>
         <tr *ngFor="let e of leagues">
             <td>{{ e.name }} </td>
+            <td>{{ clearDate(e.startTime) }} </td>
+            <td>{{ clearDate(e.endTime) }} </td>
             <td>
-                <button [routerLink]="['/admin/league', e.id]">View</button>
-                <button>Del</button>
+                <button [routerLink]="['/admin/match', e.id]">Match</button>
+                <b>&nbsp;&nbsp;</b>
+                <button [routerLink]="['/admin/league', e.id]">Rank</button>
+                <!-- <button (click)="delete">Del</button> -->
             </td>
         </tr>
     </table>
 </div>
 
 <div *ngIf="!isMain">
-    <h1> League# {{ details.league.name }} </h1>
-    <h1>{{ clearDate(details.league.startTime) }} => {{ clearDate(details.league.endTime) }} </h1>
+    <h1> League# {{ LeagueInfo.name }} </h1>
+    <h1>{{ clearDate(LeagueInfo.startTime) }} => {{ clearDate(LeagueInfo.endTime) }} </h1>
     <br />
+    <div class="teamView">
+        <div>
+            <h2>Active Team</h2>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Rank</th>
+                    <th>option</th>
+                </tr>
+                <tr *ngFor="let e of ActiveLeague">
+                    <td>{{ e.team.name }} </td>
+                    <td>
+                        {{ e.Rank }}
+                    </td>
+                    <td>
+                        <button (click)="blockTeam(e.id)">block</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <h2>Pending Team</h2>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+                <tr *ngFor="let e of PendingLeague">
+                    <td>{{ e.team.name }} </td>
+                    <td>
+                        Pending
+                    </td>
+                    <td>
+                        <button *ngIf="!e.status" (click)="confirmJoin(e.id)">confirm</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
 
-    <h2>Rank</h2>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Rank</th>
-            <th></th>
-        </tr>
-        <tr *ngFor="let e of details.rank">
-            <td>{{ e.team.name }} </td>
-            <td>
-                <div *ngIf="e.status">
-                    {{ e.Rank }}
-                </div>
-                <div *ngIf="!e.status">
-                    Pending
-                </div>
-            </td>
-            <td>
-                <button *ngIf="!e.status" (click)="confirmJoin(e.id)">confirm</button>
-            </td>
-        </tr>
-    </table>
+<div class="modelBox" *ngIf="openModel">
+    <div class="modelBoxContent">
+        <h2>Add League</h2>
+        <br />
+        <form (ngSubmit)="addLeague()">
+            <label for="name">Name:</label>
+            <input type="text" [(ngModel)]="addLeagueForm.name" placeholder="name" name="name" />
+            <br />
+            <label for="startTime ">startAt:</label>
+            <input type="text" [(ngModel)]="addLeagueForm.startTime" placeholder="start" name="startTime" />
+            <br />
+            <label for="endTime">endAt:</label>
+            <input type="text" [(ngModel)]="addLeagueForm.endTime" placeholder="end" name="endTime" />
+            <br />
+            <button>Add League</button>
+        </form>
+        <br />
+        <button (click)="openModel = false">Cancel</button>
+    </div>
 </div>

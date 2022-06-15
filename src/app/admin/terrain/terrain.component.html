@@ -1,1 +1,23 @@
-<p>terrain works!</p>
+<h1>Terrain</h1>
+<div class="terrainAction">
+    <form (ngSubmit)="addTerrain()">
+        <input [(ngModel)]="addName" name="addName" type="text" placeholder="terrain name" />
+        <b>&nbsp;&nbsp;</b>
+        <button>Add terrain</button>
+    </form>
+</div>
+
+<div class="terrainView">
+    <table>
+        <tr>
+            <th>Terrain Name</th>
+            <th>Option</th>
+        </tr>
+        <tr *ngFor="let e of terrains">
+            <td><b>{{ e.name }}</b></td>
+            <td>
+                <button (click)="deleteTerrain(e.id)">Delete</button>
+            </td>
+        </tr>
+    </table>
+</div>

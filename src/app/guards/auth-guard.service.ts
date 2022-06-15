@@ -5,23 +5,32 @@ export class AuthGuardService implements CanActivate {
     constructor(public router: Router) { }
 
     canActivate(): boolean {
-        if (this.isAuthenticated()) {
-            this.router.navigate(['/']);
+        console.log("is user", this.isUserAuth())
+        console.log("is admin", this.isAdminAuth())
+        
+        if (this.isUserAuth()) {
+            this.router.navigate(['/app']);
+            return false;
+        }
+
+        if (this.isAdminAuth()) {
+            this.router.navigate(['/admin']);
             return false;
         }
         return true;
     }
 
-
-    isAuthenticated() {
+    isUserAuth() {
         var e = localStorage.getItem("user");
-        console.log(e)
-        if (e) {
-            var user = JSON.parse(e);
-            if (user) {
-                return true;
-            }
-        }
+        if (e)
+            if (JSON.parse(e)) return true;
+        return false;
+    }
+
+    isAdminAuth() {
+        var e = localStorage.getItem("admin");
+        if (e)
+            if (JSON.parse(e)) return true;
         return false;
     }
 }

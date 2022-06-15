@@ -1,0 +1,26 @@
+<div class="main">
+    <div>
+        <div class="top">
+            <h1>Admin</h1>
+        </div>
+        <div class="container">
+            <form (ngSubmit)="onSubmit()">
+                <p class="errorMsg" *ngIf="errorMsgs!= ''">{{ errorMsgs }}</p>
+                <input type="text" name="email" [(ngModel)]="form.email" placeholder="Email" />
+                <input type="password" name="password" [(ngModel)]="form.password" placeholder="Password" />
+
+                <button>Sign in</button>
+            </form>
+        </div>
+    </div>
+    <div>
+        <h1>SIGN UP</h1>
+        <div class="container">
+            <form (ngSubmit)="onRegister()">
+                <input type="text" name="email" [(ngModel)]="adm.email" placeholder="Email" />
+                <input type="password" name="password" [(ngModel)]="adm.password" placeholder="Password" />
+                <button>Sign up</button>
+            </form>
+        </div>
+    </div>
+</div>

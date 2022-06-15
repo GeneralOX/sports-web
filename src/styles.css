@@ -1,67 +1,80 @@
-:root {
-    --main-color: #6d66ba;
-    --main-light: #746dc470;
-    --main-dark: #5952a5;
-    --sec-color: #298afa;
-    --sec-dark: #298afa;
-  }
-  
-  html,
-  body {
-    padding: 0;
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    background-color: #eceafc;
-  
-  }
-  
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-  
-  ul {
-    padding: 0;
-    margin: 0;
-  }
-  
-  * {
-    box-sizing: border-box;
-  }
-  
-  p {
-    color: gray;
-  }
-  
-  input[type="text"] {
-    color: gray;
-  }
-  
-  input[type="text"]:focus {
-    color: #e350b7;
-  }
-  
-  
-  .modelContainer {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    background-color: #000000c4;
-  }
-  
-  .modelContainer .modelContent {
-    display: flex;
-    height: 100vh;
-    justify-content: center;
-    margin-top: 50px;
-    /* align-items: center; */
-  }
-  .modelContainer .modelContent .modelMain{
-  
-    background-color: white;
-    min-width: 260px;
-    height: min-content;
-    border-radius: 10px;
-    padding: 20px 10px;
-  }
+/* :root {
+  --main-color: #6d66ba;
+  --main-light: #746dc470;
+  --main-dark: #5952a5;
+  --sec-color: #298afa;
+  --sec-dark: #298afa;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #eceafc;
+
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+p {
+  color: gray;
+}
+
+input[type="text"] {
+  color: gray;
+}
+
+input[type="text"]:focus {
+  color: #e350b7;
+} */
+
+
+
+.modelBox {
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: #000000b3;
+}
+
+.modelBox,
+.modelBoxContent,
+.modelBoxContent form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modelBoxContent,
+.modelBoxContent form {
+  flex-direction: column;
+}
+
+.modelBoxContent {
+  height: 450px;
+  width: 400px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.modelBoxContent input {
+  display: block;
+  padding: 5px;
+} 
