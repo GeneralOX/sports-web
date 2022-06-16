@@ -1,30 +1,3 @@
-<!-- <div class="main">
-    <div class="menu">
-        <ul>
-            <li><a [routerLink]="['/app/league']" routerLinkActive="active">Leagues</a></li>
-            <li><a [routerLink]="['/app/match']" routerLinkActive="active">Matches</a></li>
-                      
-            <li><a [routerLink]="['/app/ranking']">Ranking</a></li> 
-            <li><a [routerLink]="['/app/team']" routerLinkActive="active">my Team</a></li>
-
-            <li><a [routerLink]="['/app/profile']" routerLinkActive="active">My Profile</a></li>
-            <li>
-                <br />
-                <br />
-
-            </li>
-            <li>
-                <button (click)="logOut()">
-                    Logout
-                </button>
-            </li>
-
-        </ul>
-    </div>
-    <div class="content">
-        <router-outlet></router-outlet>
-    </div>
-</div> -->
 <!--Full width header Start-->
 <div class="full-width-header">
     <!--Header Start-->
@@ -64,7 +37,7 @@
                                     </div>
                                     <ul class="nav-menu text-right">
                                         <li>
-                                            <a [routerLink]="['/app/']">Home</a>
+                                            <a [routerLink]="['/app']">Home</a>
                                         </li>
 
                                         <li routerLinkActive="current-menu-item">
@@ -73,16 +46,11 @@
                                         <li routerLinkActive="current-menu-item ">
                                             <a [routerLink]="['/app/match']">Matches</a>
                                         </li>
-                                        <!-- <li routerLinkActive="current-menu-item ">
-                                            <a [routerLink]="['/app/ranking']">Ranking</a>
-                                        </li> -->
                                         <li routerLinkActive="current-menu-item ">
                                             <a [routerLink]="['/app/team']"> my Team </a>
                                         </li>
                                         <li routerLinkActive="current-menu-item ">
-                                            <a [routerLink]="['/app/profile']">
-                                                My Profile
-                                            </a>
+                                            <a [routerLink]="['/app/profile']"> My Profile </a>
                                         </li>
                                     </ul> <!-- //.nav-menu -->
                                 </nav>

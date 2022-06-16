@@ -3,16 +3,49 @@
 <h4>Matches</h4>
 <div class="view">
     <div>
-        <ng-template ngFor let-e [ngForOf]="Matches">
-            <div class="match-container">
+        <div class="container">
+            <div class="result-info pb-100 md-pb-80">
+                <table class="result-table" style="width: 100%;">
+                    <tbody>
+                        <ng-template ngFor let-e [ngForOf]="Matches">
+                            <tr>
+                                <td class="logo">
+                                    <h4>{{ e.team1.name }}</h4>
+                                </td>
+                                <td>
+                                    <span class="total-goal">
+                                        <h4>{{ e.score }}</h4>
+                                    </span>
+                                </td>
+                                <td class="logo">
+                                    <h4>{{ e.team2.name }}</h4>
+                                </td>
+                                <td>
+                                    <b>{{ getDate(e.startAt) }}</b>
+                                    <br />
+                                    <b>{{getTime(e.startAt) }}</b>
+                                </td>
+                                <td>
+                                    <a (click)="selectMatch(e.id, e.league.id, e.team1.id, e.team2.id)" class="readon"
+                                        style="width: 150px;height: 50px;">
+                                        <p>set_Result</p>
+                                    </a>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- <div class="match-container">
                 <div class="so-field">
                     {{ e.field.name }}
 
                 </div>
                 <button (click)="selectMatch(e.id, e.league.id, e.team1.id, e.team2.id)">Set Result</button>
+
                 <div class="match">
                     <div class="left-team">
-                        <!-- <img src="{{ dataImg[0] }}" alt=""> -->
                         <h4>{{ e.team1.name }}</h4>
                     </div>
                     <div class="st-option">
@@ -25,12 +58,11 @@
                         </div>
                     </div>
                     <div class="right-team">
-                        <!-- <img src="{{ dataImg[1] }}" alt=""> -->
                         <h4>{{ e.team2.name }}</h4>
                     </div>
                 </div>
-            </div>
-        </ng-template>
+            </div> -->
+
     </div>
     <div>
         <h2>New Match</h2>

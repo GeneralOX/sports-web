@@ -76,3 +76,14 @@
 .match-container{
     margin: 15px 0;
 }
+
+
+tr{
+    border:1.5px solid;
+}
+td{
+    text-align: center;
+}
+td h4{
+    margin: 0;
+}

@@ -5,8 +5,9 @@ table tr td{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 15px;
 }
-.teamView > div{
+/* .teamView > div{
     width: -webkit-fill-available;
     display: flex;
     flex-direction: column;
@@ -15,4 +16,4 @@ table tr td{
     margin: 10px;
     background-color: white;
     padding-bottom: 10px;
-}
+} */

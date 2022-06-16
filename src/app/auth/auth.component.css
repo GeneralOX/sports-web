@@ -43,8 +43,6 @@
 
 .container button {
     background-color: var(--main-color);
-    border: none;
-    color: white;
     font-weight: bold;
     padding: 10px 20px;
     margin-top: 20px;

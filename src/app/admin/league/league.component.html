@@ -1,27 +1,30 @@
 <div *ngIf="isMain">
-    <h1> Leagues </h1>
-    <button (click)="openModel = true">Add League</button>
-    <br />
-    <br />
-    <table>
-        <tr>
-            <th>League Name</th>
-            <th>Start At</th>
-            <th>End At</th>
-            <th>op</th>
-        </tr>
-        <tr *ngFor="let e of leagues">
-            <td>{{ e.name }} </td>
-            <td>{{ clearDate(e.startTime) }} </td>
-            <td>{{ clearDate(e.endTime) }} </td>
-            <td>
-                <button [routerLink]="['/admin/match', e.id]">Match</button>
-                <b>&nbsp;&nbsp;</b>
-                <button [routerLink]="['/admin/league', e.id]">Rank</button>
-                <!-- <button (click)="delete">Del</button> -->
-            </td>
-        </tr>
-    </table>
+    <h1 style="margin: 25px ;"> Leagues </h1>
+
+    <div style="display: flex;justify-content: center;flex-direction: column;    align-items: center;">
+        <button (click)="openModel = true">Add League</button>
+        <br />
+        <br />
+        <table>
+            <tr>
+                <th>League Name</th>
+                <th>Start At</th>
+                <th>End At</th>
+                <th>op</th>
+            </tr>
+            <tr style="background: lightgrey; border: 1.5px solid;" *ngFor="let e of leagues">
+                <td>{{ e.name }} </td>
+                <td>{{ clearDate(e.startTime) }} </td>
+                <td>{{ clearDate(e.endTime) }} </td>
+                <td>
+                    <button [routerLink]="['/admin/match', e.id]">Match</button>
+                    <b>&nbsp;&nbsp;</b>
+                    <button [routerLink]="['/admin/league', e.id]">Rank</button>
+                    <!-- <button (click)="delete">Del</button> -->
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
 
 <div *ngIf="!isMain">
@@ -31,41 +34,57 @@
     <div class="teamView">
         <div>
             <h2>Active Team</h2>
-            <table>
-                <tr>
-                    <th>Name</th>
-                    <th>Rank</th>
-                    <th>option</th>
-                </tr>
-                <tr *ngFor="let e of ActiveLeague">
-                    <td>{{ e.team.name }} </td>
-                    <td>
-                        {{ e.Rank }}
-                    </td>
-                    <td>
-                        <button (click)="blockTeam(e.id)">block</button>
-                    </td>
-                </tr>
-            </table>
+            <div class="container">
+                <div class="result-info pb-100 md-pb-80">
+                    <table class="result-table">
+                        <tbody>
+                            <tr>
+                                <th>Name</th>
+                                <th>Rank</th>
+                                <th>option</th>
+                            </tr>
+                            <tr *ngFor="let e of ActiveLeague" style="background-color: #eff4fd;border:1.5px solid">
+                                <td class="logo" style="min-width: 150px;">
+                                    {{ e.team.name }}
+                                </td>
+
+                                <td class="logo" style="min-width: 150px;">
+                                    {{ e.Rank }}
+                                </td>
+
+                                <td><a (click)="blockTeam(e.id)" class="readon">block</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <div>
             <h2>Pending Team</h2>
-            <table>
-                <tr>
-                    <th>Name</th>
-                    <th>Status</th>
-                    <th></th>
-                </tr>
-                <tr *ngFor="let e of PendingLeague">
-                    <td>{{ e.team.name }} </td>
-                    <td>
-                        Pending
-                    </td>
-                    <td>
-                        <button *ngIf="!e.status" (click)="confirmJoin(e.id)">confirm</button>
-                    </td>
-                </tr>
-            </table>
+            <div class="container">
+                <div class="result-info pb-100 md-pb-80">
+                    <table class="result-table">
+                        <tbody>
+                            <tr>
+                                <th>Name</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                            <tr *ngFor="let e of PendingLeague" style="background-color: #eff4fd;border:1.5px solid">
+                                <td class="logo" style="min-width: 150px;">
+                                    {{ e.team.name }}
+                                </td>
+
+                                <td class="logo" style="min-width: 150px;">
+                                    Pending
+                                </td>
+                                <td><a *ngIf="!e.status" (click)="confirmJoin(e.id)" class="readon">confirm</a></td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
